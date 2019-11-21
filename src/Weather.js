@@ -1,8 +1,9 @@
 import React from "react";
 import {CubeGrid} from "better-react-spinkit";
-import CitySearch from "./CitySearch";
+import {getWeather} from "./WeatherService";
 
-var Weather = (props) => {
+var Weather = async (props) => {
+    this.weather = await getWeather(this.props.chosenCity);
 
     if (this.weather) {
         return (
@@ -13,7 +14,6 @@ var Weather = (props) => {
     } else {
         return (
             <div className="main-content weather">
-                <CitySearch/>
                 <CubeGrid size={50} color="white"/>
             </div>
         );

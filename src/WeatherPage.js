@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import CitySearch from "./CitySearch";
 import Weather from "./Weather";
-import {getWeather} from "./WeatherService";
 import {getCities} from "./CityService";
 
 class WeatherPage extends Component {
@@ -23,10 +22,7 @@ class WeatherPage extends Component {
                 citySearch: chosenCity
             });
         });
-
-        this.weather = await getWeather(this.chosenCity);
     };
-
 
     search = e => {
         const search = e.target.value;
