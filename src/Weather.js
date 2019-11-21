@@ -1,41 +1,22 @@
-import React, {Component} from "react";
-import {getWeather} from "./WeatherService";
+import React from "react";
 import {CubeGrid} from "better-react-spinkit";
+import CitySearch from "./CitySearch";
 
-class Weather extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: true
-        }
-        //On ne met pas weather dans un state pour ne pas faire un appel API à chaque recherche et avoir une copie de la liste entière toujours disponible.
-        this.weather = undefined;
-    }
+var Weather = (props) => {
 
-    componentDidMount = () => {
-        getWeather().then(weather => {
-            this.weather = weather;
-            this.setState({
-                loading: false
-            });
-        });
-    };
-
-    render = () => {
-        if (this.weather) {
-            return (
-                <div className="main-content weather">
-                    {this.weather}
-                </div>
-            );
-        } else {
-            return (
-                <div className="main-content weather">
-                    <CubeGrid size={50} color="white"/>
-                </div>
-            );
-        }
-
+    if (this.weather) {
+        return (
+            <div className="main-content weather">
+                {this.weather}
+            </div>
+        );
+    } else {
+        return (
+            <div className="main-content weather">
+                <CitySearch/>
+                <CubeGrid size={50} color="white"/>
+            </div>
+        );
     }
 }
 

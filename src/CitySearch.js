@@ -1,20 +1,6 @@
 import React, {Component} from "react";
 import Autosuggest from 'react-autosuggest';
 import {getCities} from "./CityService";
-//
-// const data = async () => {
-//     return await getCities();
-// }
-
-// const data = async () => {
-//     const response =  await getCities();
-//     console.log(response);
-//     return response;
-// }
-
-// console.log(data());
-
-const cities = [];
 
 class CitySearch extends Component {
     constructor(props) {
@@ -34,14 +20,12 @@ class CitySearch extends Component {
 
     componentDidMount = async () => {
         const response = await getCities();
-        console.log(response.data);
 
         this.cities = response.data.list.map((city) => {
             return {
                 name: city.name
             }
         });
-        console.log(this.cities);
     };
 
     onChange = (event, {newValue}) => {

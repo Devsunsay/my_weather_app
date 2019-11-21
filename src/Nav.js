@@ -18,10 +18,6 @@ class Nav extends Component {
                     </li>
 
                     <li className="nav-item">
-                        <a className="nav-link" href={citiesUrl}>Cities</a>
-                    </li>
-
-                    <li className="nav-item">
                         <a className="nav-link" href={weatherUrl}>Weather</a>
                     </li>
 
