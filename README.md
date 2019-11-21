@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+- Add DotEnv library if needed
+- Create a env.local file in the root of your project.
+- Add REACT_APP_WEATHER_API_KEY in there
+- Restart the development server
+
 ## Available Scripts
 
 In the project directory, you can run:
