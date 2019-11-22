@@ -10,6 +10,7 @@ class WeatherPage extends Component {
         this.state = {
             loading: true,
             chosenCity: "",
+            icon: null,
             temperature: null
         }
     }
@@ -19,9 +20,7 @@ class WeatherPage extends Component {
         //     chosenCity: suggestion.name,
         // });
         console.log('suggestion.name dans updateChosenCity', suggestion.name);
-        console.log('chosenCity dans updateChosenCity', this.state.chosenCity);
-        // this.getWeatherData(this.state.chosenCity);
-        this.getWeatherData(suggestion.name);
+        this.getWeatherData(suggestion.name)
         return suggestion.name;
     };
 
@@ -33,6 +32,7 @@ class WeatherPage extends Component {
 
         this.setState({
             loading: false,
+            icon: response.data.main.icon,
             temperature: response.data.main.temp
         });
     };
@@ -49,6 +49,7 @@ class WeatherPage extends Component {
                 <Weather
                     loading={this.state.loading}
                     chosenCity={this.state.chosenCity}
+                    icon={this.state.icon}
                     temperature={this.state.temperature}
                 />
             </div>

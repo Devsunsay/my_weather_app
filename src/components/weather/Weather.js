@@ -2,7 +2,7 @@ import React from "react";
 import {CubeGrid} from "better-react-spinkit";
 import WeatherCard from "./WeatherCard";
 
-const Weather = ({loading, chosenCity, temperature, icon}) => {
+const Weather = ({loading, chosenCity, temperature}) => {
     if (loading) {
         return (
             <div className="main-content weather">
@@ -13,7 +13,7 @@ const Weather = ({loading, chosenCity, temperature, icon}) => {
 
     return (
         <div className="main-content weather">
-            <WeatherCard chosenCity={chosenCity} temperature={temperature} icon={icon}/>
+            <WeatherCard chosenCity={chosenCity} temperature={temperature}/>
         </div>
     );
 };
