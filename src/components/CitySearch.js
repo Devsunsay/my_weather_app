@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Autosuggest from 'react-autosuggest';
-import {getCities} from "./CityService";
+import {getCities} from "../CityService";
 
 class CitySearch extends Component {
     constructor(props) {
@@ -47,7 +47,7 @@ class CitySearch extends Component {
     // When suggestion is clicked, Autosuggest needs to populate the input
     // based on the clicked suggestion. Teach Autosuggest how to calculate the
     // input value for every given suggestion.
-    getSuggestionValue = suggestion => suggestion.name;
+    // const getSuggestionValue = suggestion => suggestion.name;
 
     // Use your imagination to render suggestions.
     renderSuggestion = suggestion => (
@@ -87,7 +87,7 @@ class CitySearch extends Component {
                 suggestions={suggestions}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={this.getSuggestionValue}
+                getSuggestionValue={this.props.getSuggestionHandler}
                 renderSuggestion={this.renderSuggestion}
                 inputProps={inputProps}
             />

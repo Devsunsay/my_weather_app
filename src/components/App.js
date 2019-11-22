@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import './App.scss';
-import logo from './logo.png';
+import '../App.scss';
+import logo from '../logo.png';
 import Home from "./Home";
 import Nav from "./Nav";
-import WeatherPage from "./WeatherPage";
-import {homeUrl, weatherUrl} from "./constants";
+import WeatherPage from "./weather/WeatherPage";
+import {homeUrl, weatherUrl} from "../constants";
 
 function App() {
   return (

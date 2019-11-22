@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import {weatherUrl, homeUrl, citiesUrl} from "./constants";
+import {weatherUrl, homeUrl, citiesUrl} from "../constants";
 
 class Nav extends Component {
     render = () => (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-            <a className="navbar-brand" href={homeUrl}>MySuperProject</a>
+            <a className="navbar-brand" href={homeUrl}>MySuperWeatherApp</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"
                     aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"/>
