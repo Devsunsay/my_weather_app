@@ -11,9 +11,12 @@ function App() {
   return (
       <div className="App container-fluid">
         <header className="App-header row">
-          <Nav/>
+            <Nav/>
 
-          <img src={logo} className="App-logo" alt="logo" />
+            <div className="logo-div">
+                <img src={logo} className="App-logo" alt="logo" />
+                <p className="logo-name">MySuperWeatherApp</p>
+            </div>
         </header>
 
         <section className="container-fluid">

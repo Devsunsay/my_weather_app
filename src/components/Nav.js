@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import {weatherUrl, homeUrl, citiesUrl} from "../constants";
+import {weatherUrl, homeUrl} from "../constants";
 
 class Nav extends Component {
     render = () => (
-        <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-            <a className="navbar-brand" href={homeUrl}>MySuperWeatherApp</a>
+        <nav className="navbar navbar-expand-md navbar-dark">
+            <div className="navbar-brand-bg">
+                <a className="navbar-brand" href={homeUrl}>MySuperWeatherApp</a>
+            </div>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"
                     aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"/>
@@ -22,9 +24,6 @@ class Nav extends Component {
                     </li>
 
                 </ul>
-                <form className="form-inline my-2 my-md-0">
-                    <input className="form-control" type="text" placeholder="Search"/>
-                </form>
             </div>
         </nav>
     );
