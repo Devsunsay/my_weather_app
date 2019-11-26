@@ -3,7 +3,7 @@ import CitySearch from "../CitySearch";
 import Weather from "./Weather";
 import {getWeather} from "../../WeatherService";
 import {getWeatherForecast} from "../../WeatherService";
-
+import {getIteratorWithStep} from "../../Utils";
 
 class WeatherPage extends Component {
     constructor(props) {
@@ -21,17 +21,33 @@ class WeatherPage extends Component {
         this.forecastButton = document.getElementById('weather-forecast-button');
 
         if(this.forecastButton) {
-            const response = await getWeatherForecast(this.state.chosenCity);
-            console.log('appel api forecast in componentDidUpdate', response);
-
             this.forecastButton.addEventListener( "click", async () => {
 
-                return response.list;
+                const response = await getWeatherForecast(this.state.chosenCity);
+                console.log('appel api forecast in componentDidUpdate', response);
+
+                const $currentWeatherCard = document.getElementById('current_weather_card');
+                const $forecastWeatherCard = document.getElementById('forecast_weather_card');
+
+                if($currentWeatherCard) {
+                    $currentWeatherCard.style.display = "none";
+                    console.log('$currentWeatherCard défini');
+                }
+
+                if($forecastWeatherCard) {
+                    $forecastWeatherCard.style.display = "flex";
+                    console.log('$forecastWeatherCard défini');
+                }
+
+                //filter
+                const getIteratorWithStep = getIteratorWithStep(7,40,7);
+                getIteratorWithStep.map(value => {
+                    console.log(response.list[value]);
+                    return response.list[value];
+                })
             });
         }
-
-
-    }
+    };
 
     updateChosenCity = suggestion => {
         this.setState({

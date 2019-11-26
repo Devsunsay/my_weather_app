@@ -1,18 +1,34 @@
 import React from "react";
-import {getWeatherForecast} from "../../WeatherService";
 
 const WeatherCard = ({chosenCity, temperature, icon}) => {
-    // let currentDate = new Date("d m Y");
-    var today = new Date();
-    const tomorrow = new Date(today)
 
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
+    let getFiveNextDaysDates = () => {
+        // let today = new Date();
+        // console.log('today', today)
+        const today = new Date();
+        var fiveNextDaysDate = [];
 
-    today = dd + '/' + mm + '/' + yyyy;
+        for (let i = 1; i <= 5; i++) {
+            let tomorrow = new Date(today);
 
-    // tomorrow.setDate(tomorrow.getDate() + 1);
+            console.log('tomorrow début i', tomorrow);
+            // let tomorrow = today.getDate() + i
+            tomorrow.setDate(tomorrow.getDate() + i);
+            console.log('tomorrow milieu i', tomorrow);
+
+            var dd = String(tomorrow.getDate()).padStart(2, '0');
+            var mm = String(tomorrow.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = tomorrow.getFullYear();
+
+            tomorrow = dd + '/' + mm + '/' + yyyy;
+            console.log('tomorrow fin i', tomorrow);
+
+            fiveNextDaysDate.push(tomorrow);
+        }
+        return fiveNextDaysDate;
+    }
+
+    const datesArray = getFiveNextDaysDates();
 
     return (
         <>
@@ -33,30 +49,46 @@ const WeatherCard = ({chosenCity, temperature, icon}) => {
                         <tr>
                             <th scope="col">
                                 {
-                                // currentDate.setDate(currentDate.getDate() + 1);
-                                    today
+                                    // currentDate.setDate(currentDate.getDate() + 1);
+                                    datesArray[0]
                                 }
                             </th>
-                            <th scope="col">{}</th>
-                            <th scope="col">{Date.now() + 3}</th>
-                            <th scope="col">{Date.now() + 4}</th>
-                            <th scope="col">{Date.now() + 5}</th>
+                            <th scope="col">
+                                {
+                                    datesArray[1]
+                                }
+                            </th>
+                            <th scope="col">
+                                {
+                                    datesArray[2]
+                                }
+                            </th>
+                            <th scope="col">
+                                {
+                                    datesArray[3]
+                                }
+                            </th>
+                            <th scope="col">
+                                {
+                                    datesArray[4]
+                                }
+                            </th>
                         </tr>
                         </thead>
 
                         <tbody>
 
-                            <tr>
-                                <th scope="col">
-                                    <img id={icon} className="icon_view"
-                                         src={`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th scope="col">
-                                    <p className="temperature_view">{temperature}°C</p>
-                                </th>
-                            </tr>
+                        <tr>
+                            <th scope="col">
+                                <img id={icon} className="icon_view"
+                                     src={`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th scope="col">
+                                <p className="temperature_view">{temperature}°C</p>
+                            </th>
+                        </tr>
 
                         </tbody>
                     </table>
